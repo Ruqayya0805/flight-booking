@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Flight Booking Application
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This Next.js application allows users to book flights by entering their details, fetching available flights from an SQL database, and generating an e-ticket. The generated e-ticket is also stored in the SQL database for future reference.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- User details input form.
+- Fetches available flights from an SQL database.
+- Generates an e-ticket after booking.
+- Stores user information and e-ticket in the SQL database.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Make sure you have the following installed:
 
-## Learn More
+- [Next.js](https://nextjs.org/)
+- SQL Database (Oracle SQL)
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://github.com/your-username/nextjs-flight-booking-app.git
 
-## Deploy on Vercel
+2. Navigate to the project directory:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   cd nextjs-flight-booking-app
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Install the dependencies:
+   ```bash
+   npm install
+
+4. Set up your SQL database (Oracle SQL):
+Create a database (e.g., flight_booking).
+Create the necessary tables to store user details, flight data, and e-ticket information.
+
+## Database Structure
+
+Ensure the following tables are present in your SQL database:
+
+### Flights Table
+
+| Column         | Null?   | Type             |
+|----------------|---------|------------------|
+| `FLIGHT_ID`    | NOT NULL| NUMBER           |
+| `BRAND`        |         | VARCHAR2(50)     |
+| `PRICE`        |         | NUMBER           |
+| `DEPARTURE_TIME` |       | VARCHAR2(20)     |
+| `ARRIVAL_TIME` |         | VARCHAR2(20)     |
+
+### Flight Bookings Table
+
+| Column          | Null?   | Type             |
+|-----------------|---------|------------------|
+| `PASSENGER_ID`  | NOT NULL| NUMBER           |
+| `FIRST_NAME`    | NOT NULL| VARCHAR2(50)     |
+| `LAST_NAME`     | NOT NULL| VARCHAR2(50)     |
+| `FROM_CITY`     | NOT NULL| VARCHAR2(20)     |
+| `TO_CITY`       | NOT NULL| VARCHAR2(20)     |
+| `DEPARTURE_DATE`| NOT NULL| DATE             |
+| `TRIP_TYPE`     | NOT NULL| VARCHAR2(20)     |
+| `FARE_TYPE`     | NOT NULL| VARCHAR2(20)     |
+| `CLASS_TYPE`    | NOT NULL| VARCHAR2(20)     |
+
+### Bookings Table
+
+| Column         | Null?   | Type             |
+|----------------|---------|------------------|
+| `PNR`          | NOT NULL| VARCHAR2(20)     |
+| `ETICKET_NO`   | NOT NULL| VARCHAR2(20)     |
+| `FIRST_NAME`   | NOT NULL| VARCHAR2(50)     |
+| `LAST_NAME`    | NOT NULL| VARCHAR2(50)     |
+| `FLIGHT_BRAND` | NOT NULL| VARCHAR2(50)     |
+| `DEPARTURE_TIME`| NOT NULL| VARCHAR2(20)    |
+| `ARRIVAL_TIME` | NOT NULL| VARCHAR2(20)     |
+| `CLASS_TYPE`   | NOT NULL| VARCHAR2(20)     |
+
