@@ -2,8 +2,7 @@
 
 ## Overview
 
-This Next.js application allows users to book flights by entering their details, fetching available flights from an SQL database, and generating an e-ticket. The generated e-ticket is also stored in the SQL database for future reference.
-
+This Next.js application enables users to book flights by providing their details. It retrieves available flight options from an SQL database and generates an e-ticket, which is also stored in the database for future reference.
 ## Features
 
 - User details input form.
